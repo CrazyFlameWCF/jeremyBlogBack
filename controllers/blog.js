@@ -57,7 +57,7 @@ exports.blog = async (req, res) => {
 
     res.json({
       success: true,
-      createdBlog
+      createdBlog,
     })
   } catch (e) {
     console.log(e)
