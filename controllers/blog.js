@@ -79,6 +79,23 @@ exports.blog = async (req, res) => {
   
   }
 
+  exports.viewArticle = async (req, res) => {
+    let articleID = req.params.id;
+
+    try {
+      let article = await Blog.find({_id: articleID}).populate('comments').populate('tag').exec();
+      if (!!article) {
+        res.json({
+          success: true,
+          article
+        })
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  
+  }
+
   exports.reply = async (req, res) => {
     console.log(req.body)
     const { email, message } = req.body; 
